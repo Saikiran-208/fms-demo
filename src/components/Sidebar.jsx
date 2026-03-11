@@ -11,7 +11,7 @@ const navItems = [
   { path: "/weather",       label: "Weather",       icon: "🌤️", desc: "Forecasts & risks" },
   { path: "/market",        label: "Market Prices", icon: "📈", desc: "Mandi rates"       },
   { path: "/irrigation",    label: "Irrigation",    icon: "💧", desc: "Smart advisory"    },
-  { path: "/map",           label: "District Map",  icon: "🗺️", desc: "Telangana map"     },
+  { path: "/map",           label: "District Overview",  icon: "🗺️", desc: "Telangana map"     },
   { path: "/notifications", label: "Notifications", icon: "🔔", desc: "Alerts & updates"  },
   { path: "/settings",      label: "Settings",      icon: "⚙️", desc: "Preferences"       },
 ];
