@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function Navbar({ title }) {
   const { dark, toggleTheme } = useTheme();
   const { alerts, alertCount, markAsRead, notifOpen, setNotifOpen, searchQuery, setSearchQuery } = useApp();
-  const { currentFarmer } = useAuth();
+  const { currentFarmer, isGuest } = useAuth();
   const navigate = useNavigate();
   const [searchFocused, setSearchFocused] = useState(false);
 
@@ -67,11 +67,19 @@ export default function Navbar({ title }) {
           </button>
 
           {/* Avatar */}
-          <div
-            onClick={() => navigate("/profile")}
-            className="w-9 h-9 rounded-full bg-accent text-white flex items-center justify-center font-extrabold text-[14px] shrink-0 cursor-pointer border-2 border-border hover:opacity-90 transition-all duration-200"
-          >
-            {initials}
+          <div className="flex items-center gap-1.5">
+            {isGuest && (
+              <span className="hidden sm:inline-block text-[11px] font-semibold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30">
+                Guest
+              </span>
+            )}
+            <div
+              onClick={() => navigate("/profile")}
+              className="w-9 h-9 rounded-full bg-accent text-white flex items-center justify-center font-extrabold text-[14px] shrink-0 cursor-pointer border-2 border-border hover:opacity-90 transition-all duration-200"
+              title={isGuest ? "Guest Mode" : currentFarmer?.name}
+            >
+              {initials}
+            </div>
           </div>
         </div>
       </div>

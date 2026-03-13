@@ -7,7 +7,7 @@ const STEPS = { PHONE: "phone", OTP: "otp", PROFILE: "profile", DONE: "done" };
 
 export default function Login() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, loginAsGuest } = useAuth();
   const [step, setStep]           = useState(STEPS.PHONE);
   const [phone, setPhone]         = useState("");
   const [otp, setOtp]             = useState(["", "", "", "", "", ""]);
@@ -57,6 +57,11 @@ export default function Login() {
     navigate("/");
   }
 
+  function handleGuestLogin() {
+    loginAsGuest();
+    navigate("/");
+  }
+
 
   return (
     <div className="min-h-screen bg-page flex items-center justify-center p-4 transition-colors duration-250">
@@ -102,6 +107,23 @@ export default function Login() {
               >
                 {loading ? "Sending OTP..." : "Send OTP →"}
               </button>
+
+              {/* ── Divider ── */}
+              <div className="flex items-center gap-3 my-4">
+                <div className="flex-1 h-px bg-border" />
+                <span className="text-[12px] text-text-muted font-medium">or</span>
+                <div className="flex-1 h-px bg-border" />
+              </div>
+
+              {/* ── Guest Button ── */}
+              <button
+                type="button"
+                onClick={handleGuestLogin}
+                className="w-full p-3.5 bg-transparent border border-border text-text-muted rounded-xl font-semibold text-[14px] cursor-pointer transition-all duration-200 hover:border-accent hover:text-accent"
+              >
+                👤 Continue as Guest
+              </button>
+
               <div className="mt-4 p-3 bg-page rounded-[10px] border border-border">
                 <div className="text-[11px] text-text-muted leading-relaxed">
                   💡 <strong>Demo:</strong> Use any of these numbers: <br />
