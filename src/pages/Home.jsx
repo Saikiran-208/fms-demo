@@ -127,9 +127,9 @@ function AlertsCard() {
       <div className="flex justify-between items-center mb-4">
         <div className="text-[15px] font-bold text-text-primary">🔔 Active Alerts</div>
         {alertCount > 0 && (
-           <div className="bg-red-500 text-white text-[11px] font-bold px-[9px] py-[2px] rounded-full">
-             {alertCount} unread
-           </div>
+          <div className="bg-red-500 text-white text-[11px] font-bold px-[9px] py-[2px] rounded-full">
+            {alertCount} unread
+          </div>
         )}
       </div>
       <div className="flex flex-col">
@@ -178,11 +178,19 @@ function QuickActionButton({ a, navigate }) {
 }
 
 function QuickActions({ navigate }) {
-  const actions = [
-    { label: "View Farmers", icon: "👨‍🌾", to: "/farmers" },
-    { label: "Check Soil", icon: "🌱", to: "/soil" },
-    { label: "View Harvest", icon: "🌾", to: "/harvest" },
-    { label: "Market Prices", icon: "📈", to: "/market" },
+  const { role } = useAuth();
+  const prefix = role === "admin" ? "/admin" : "/farmer";
+  
+  const actions = role === "admin" ? [
+    { label: "View Farmers", icon: "👨‍🌾", to: `${prefix}/farmers` },
+    { label: "Check Soil", icon: "🌱", to: `${prefix}/soil` },
+    { label: "View Harvest", icon: "🌾", to: `${prefix}/harvest` },
+    { label: "Weather Admin", icon: "🌤️", to: `${prefix}/weather` },
+  ] : [
+    { label: "My Farm", icon: "🏠", to: prefix },
+    { label: "Check Soil", icon: "🌱", to: `${prefix}/soil` },
+    { label: "Market Prices", icon: "📈", to: `${prefix}/market` },
+    { label: "Weather", icon: "🌤️", to: `${prefix}/weather` },
   ];
   return (
     <div className="grid grid-cols-[repeat(auto-fit,minmax(130px,1fr))] gap-3">

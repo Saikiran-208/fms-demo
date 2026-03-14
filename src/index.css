@@ -64,41 +64,92 @@
    Global Search
 ────────────────────────────────────────── */
 .global-search {
-  background: var(--theme-input); border: 1px solid var(--theme-border);
-  border-radius: 8px; padding: 7px 12px;
-  font-size: 13px; color: var(--theme-text-primary);
-  outline: none; transition: all 0.2s;
+  background: var(--theme-input);
+  border: 1px solid var(--theme-border);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 13px;
+  color: var(--theme-text-primary);
+  outline: none;
+  transition: all 0.2s;
   width: 200px;
 }
-.global-search:focus { border-color: var(--theme-accent); width: 260px; }
-.global-search::placeholder { color: var(--theme-text-muted); }
+
+.global-search:focus {
+  border-color: var(--theme-accent);
+  width: 260px;
+}
+
+.global-search::placeholder {
+  color: var(--theme-text-muted);
+}
 
 @media (max-width: 600px) {
-  .global-search { width: 120px; }
-  .global-search:focus { width: 160px; }
+  .global-search {
+    width: 120px;
+  }
+
+  .global-search:focus {
+    width: 160px;
+  }
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--theme-border); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--theme-text-muted); }
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-text-muted);
+}
 
 /* ──────────────────────────────────────────
    Print Media
 ─────────────────────────────────────────── */
 @media print {
-  .desktop-sidebar, .hamburger-btn, .notif-drawer, .farmer-drawer { display: none !important; }
-  .main-content { margin: 0 !important; }
-  .card { box-shadow: none; border: 1px solid #ccc; }
+
+  .desktop-sidebar,
+  .hamburger-btn,
+  .notif-drawer,
+  .farmer-drawer {
+    display: none !important;
+  }
+
+  .main-content {
+    margin: 0 !important;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
 }
 
 /* ──────────────────────────────────────────
    Button / Interactive micro-animations
 ─────────────────────────────────────────── */
-button { transition: opacity 0.15s, transform 0.15s; }
-button:active:not(:disabled) { transform: scale(0.97); }
-button:disabled { opacity: 0.5; }
+button {
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+
 /* ──────────────────────────────────────────
    Farmer Drawer (Right Side)
 ─────────────────────────────────────────── */
@@ -125,11 +176,21 @@ button:disabled { opacity: 0.5; }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slide-in-right {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
